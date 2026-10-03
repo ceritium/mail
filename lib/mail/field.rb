@@ -162,7 +162,8 @@ module Mail
           name, value = raw_field.split(Constants::COLON, 2)
           name.rstrip!
           if FIELD_NAME_REGEXP.match?(name)
-            [ name.rstrip, value.strip ]
+            value.strip!
+            [ name, value ]
           else
             Kernel.warn "WARNING: Ignoring unparsable header #{raw_field.inspect}: invalid header name syntax: #{name.inspect}"
             nil
