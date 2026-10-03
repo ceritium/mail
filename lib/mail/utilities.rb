@@ -288,7 +288,7 @@ module Mail
       if value.kind_of?(NilClass)
         true
       elsif value.kind_of?(String)
-        value !~ /\S/
+        !/\S/.match?(value)
       else
         value.respond_to?(:empty?) ? value.empty? : !value
       end
