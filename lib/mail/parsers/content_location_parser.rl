@@ -9,6 +9,7 @@ begin
   # RFC 2557 Content-Location
   # https://tools.ietf.org/html/rfc2557#section-4.1
   machine content_location;
+  getkey data.getbyte(p);
   alphtype int;
 
   # Quoted String

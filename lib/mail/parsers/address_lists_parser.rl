@@ -7,6 +7,7 @@ begin
 
 %%{
   machine address_lists;
+  getkey data.getbyte(p);
   alphtype int;
 
   # Phrase

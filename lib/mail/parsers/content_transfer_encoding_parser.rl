@@ -7,6 +7,7 @@ begin
 
 %%{
   machine content_transfer_encoding;
+  getkey data.getbyte(p);
   alphtype int;
 
   action encoding_s { encoding_s = p }

@@ -7,6 +7,7 @@ begin
 
 %%{
   machine envelope_from;
+  getkey data.getbyte(p);
   alphtype int;
 
   # Address

@@ -7,6 +7,7 @@ begin
 
 %%{
   machine date_time;
+  getkey data.getbyte(p);
   alphtype int;
 
   # Phrase

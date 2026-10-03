@@ -7,6 +7,7 @@ begin
 
 %%{
   machine content_disposition;
+  getkey data.getbyte(p);
   alphtype int;
 
   # Disposition Type
