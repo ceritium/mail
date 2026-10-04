@@ -5,6 +5,9 @@ require 'mail/utilities'
 
 module Mail
   class Part < Message
+    HEADER_BODY_SEPARATOR = /#{Constants::LAX_CRLF}#{Constants::WSP}*#{Constants::LAX_CRLF}/m
+    private_constant :HEADER_BODY_SEPARATOR
+
     # Creates a new empty Content-ID field and inserts it in the correct order
     # into the Header.  The ContentIdField object will automatically generate
     # a unique content ID if you try and encode it or output it to_s without
@@ -100,7 +103,7 @@ module Mail
 
     # A part may not have a header.... so, just init a body if no header
     def parse_message
-      header_part, body_part = raw_source.split(/#{Constants::LAX_CRLF}#{Constants::WSP}*#{Constants::LAX_CRLF}/m, 2)
+      header_part, body_part = raw_source.split(HEADER_BODY_SEPARATOR, 2)
       if header_part =~ Constants::HEADER_LINE
         self.header = header_part
         self.body   = body_part
