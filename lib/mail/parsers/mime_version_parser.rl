@@ -7,6 +7,7 @@ begin
 
 %%{
   machine mime_version;
+  getkey data.getbyte(p);
   alphtype int;
 
   # Major Digits

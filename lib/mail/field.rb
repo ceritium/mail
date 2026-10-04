@@ -99,6 +99,9 @@ module Mail
       "content-location" => "Content-Location",
     }
 
+    FIELD_NAME_REGEXP = /\A#{Constants::FIELD_NAME}\z/
+    private_constant :FIELD_NAME_REGEXP
+
     # Generic Field Exception
     class FieldError < StandardError
     end
@@ -158,8 +161,9 @@ module Mail
         if raw_field.index(Constants::COLON)
           name, value = raw_field.split(Constants::COLON, 2)
           name.rstrip!
-          if /\A#{Constants::FIELD_NAME}\z/.match?(name)
-            [ name.rstrip, value.strip ]
+          if FIELD_NAME_REGEXP.match?(name)
+            value.strip!
+            [ name, value ]
           else
             Kernel.warn "WARNING: Ignoring unparsable header #{raw_field.inspect}: invalid header name syntax: #{name.inspect}"
             nil

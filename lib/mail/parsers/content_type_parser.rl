@@ -7,6 +7,7 @@ begin
 
 %%{
   machine content_type;
+  getkey data.getbyte(p);
   alphtype int;
 
   # Main Type
